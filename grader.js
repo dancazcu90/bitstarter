@@ -25,9 +25,8 @@ var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
 var rest = require('restler');
-var HTMLFILE_DEFAULT = "index1.html";
-var CHECKSFILE_DEFAULT = "checks1.json";
-var URL_DEFAULT = "http://lit-crag-96381.herokuapp.com";
+var HTMLFILE_DEFAULT = "index.html";
+var CHECKSFILE_DEFAULT = "checks.json";
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
@@ -82,7 +81,7 @@ if(require.main == module) {
     program
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
-		.option('-u, --url <check_url>', 'Path to url', URL_DEFAULT)
+		.option('-u, --url <check_url>', 'Enter url!')
         .parse(process.argv);
 	if (program.url)
 	rest.get(program.url).on('complete', function(result) {
